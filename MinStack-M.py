@@ -32,20 +32,3 @@ class MinStack(object):
       """
       return min(self.stack)
       
-
-obj = MinStack()
-obj.push(2)
-obj.push(0)
-obj.push(3)
-obj.push(0)
-print(obj.fullStack())
-print(obj.getMin())
-obj.pop()
-print(obj.fullStack())
-print(obj.getMin())
-obj.pop()
-print(obj.fullStack())
-print(obj.getMin())
-obj.pop()
-print(obj.fullStack())
-print(obj.getMin())
