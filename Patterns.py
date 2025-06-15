@@ -127,23 +127,70 @@ def pattern17(n): # Alphabet right triangle (E DE CDE)
       print()
          
 def pattern18(n): # Diamond in middle
-   pass
+   for i in range(n,0,-1):
+      for j in range(1,i+1):
+         print("*",end="")
+      print(" " * (n-i)*2,end="")
+      for j in range(i,0,-1):
+         print("*",end="")
+      print()
+   for i in range(1,n+1):
+      for j in range(1,i+1):
+         print("*",end="")
+      print(" " * (n-i)*2,end="")
+      for j in range(i,0,-1):
+         print("*",end="")
+      print()
 
 def pattern19(n): # Joint right triangle mirrored
-   pass
+   for i in range(1,n+1):
+      for j in range(i):
+         print("*", end="")
+      print(" " * (n-i) * 2, end="")
+      for j in range(i):
+         print("*", end="")
+      print()
+   for i in range(n-1, 0, -1):
+      for j in range(1,i+1):
+         print("*", end="")
+      print(" " * (n-i)*2 , end="")
+      for j in range(i):
+         print("*", end="")
+      print()
 
-def pattern20(n): # Right triangle 1 - n numbers
-   pass
+def pattern20(n): # Right triangle 1 to n numbers
+   num = 0
+   for i in range(1,n+1):
+      for j in range(1,i+1):
+         num += 1
+         print(num,end=" ")
+      print()
 
 def pattern21(n): # Empty box
-   pass
+   for i in range(n):
+      for j in range(1,n+1):
+         if i == 0 or i == n-1 or j == 1 or j == n:
+            print("*", end="")
+         else:
+            print(" ",end="")
+      print()
 
 def pattern22(n): #Concentric Squares
-   pass
+   for i in range(0,n*2-1):
+      for j in range(0,n*2-1):
+         top = i
+         bottom = j 
+         right = (2*n-2) - j
+         left = (2*n-2) - i
+
+         print( n - (min(min(top,bottom) , min(left,right))),end=" ")
+
+         
+      print()
 
 
 def main(n):
-   pattern17(n)
+   pattern22(n)
 
 if __name__ == "__main__":
    main(n = 5) 
