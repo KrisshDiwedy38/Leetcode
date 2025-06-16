@@ -188,7 +188,6 @@ def pattern22(n): #Concentric Squares
          
       print()
 
-
 def main(n):
    pattern22(n)
 
