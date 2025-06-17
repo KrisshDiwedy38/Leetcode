@@ -1,91 +1,68 @@
-import math
+def rec1(N): # Print something N times
+   if N != 0:
+      print(f" Hi! no. {N}")
+      rec1(N-1)
+   
+def rec2(i , N): # 1 to N
+   if i<1: return
+   if i > N: return
+   print(i)
+   rec2(i+1,N)
+   
+def rec3(N): # N to 1
+   if N < 1: return
+   print(N)
+   rec3(N-1)
 
-def floatToInt(float_num):
-   int_num = int(str(float_num).split('.')[0]+str(float_num).split('.')[1])
-   return int_num
+def rec4(N): # Sum of first N
+   if N < 1: return 0
+   return(N + rec4(N-1))
+   
+# OR 
 
-def maths1(float_num): # Count the number of digits
-   int_num = int(str(float_num).split('.')[0]+str(float_num).split('.')[1])
-   digits = round(math.log10(int_num) + 1)
-   return(f"Digits in {float_num} : {digits}")
+def rec5(N): # Sum = n (n +1) / 2
+   return (N * ( N + 1)) // 2
 
-def maths2(float_num): # Reverse the number
-   float_numbers = str(float_num).split('.')
-   if float_numbers[1] == '0':
-      decimal = 0
-      int_num = int(float_numbers[0])      
-   else:
-      decimal = len(float_numbers[0])
-      int_num = int(float_numbers[0] + float_numbers[1])
-   revNum = 0
-   while int_num > 0:
-      last_digit = int_num % 10
-      revNum = (revNum * 10) + last_digit 
-      int_num = int_num // 10
-   return(revNum/10**decimal)
+def rec6(N): # Factorial
+   if N < 1: return 1
+   return(N * rec6(N-1))
 
-def maths3(float_num): # Checking for palindrome
-   revNum = maths2(float_num)
-   if revNum == float_num:
-      return("Palindrome")
-   else:
-      return("Not Palindrome")
+def revArray(n, arr): # Reversing an Array
+   p1 = 0
+   p2 = n - 1
+   while p1 < p2:
+      arr[p1],arr[p2] = arr[p2],arr[p1]
+      p1 += 1
+      p2 -= 1
+   return arr
 
-def maths4(a, b):  # GCD
-    if a == 0 or b == 0:
-        return max(a, b)
-
-    if a == b:
-        return a
-
-    if a > b:
-        return maths4(a - b, b)
-    else:
-        return maths4(a, b - a)
-
-def maths5(a,b): # LCM = |a * b| // GCD (a,b)
-   if a == 0 or b == 0:
-      return 0
-   else:
-      return f" LCM = { abs(a*b) // maths4(a,b)}"
-
-def maths6(number): # Armstrong abc = a^3 + b^3 + c^3 ( 3 = len(abc)) 
-   length = len(str(number))
-   sum = 0
-   while number > 0:
-      last_digit = number % 10
-      sum == last_digit ** length
-      number = number // 10
-
-   if sum == number:
-      return("Yes")
-   else:
-      return('No')
-
-def maths7(number): # All Divisors
-   root = int(math.sqrt(number))
-   divs = []
-   for i in range(1,root+1):
-      if number % i == 0:
-         divs.append(i)
-         if i != number // i:
-            divs.append(number // i) 
+def palindrome(string):
+   p1 = 0
+   p2 = len(string) - 1
+   while p1 < p2:
+      if not string[p1].isalnum():
+         p1+=1
+      elif not string[p2].isalnum():
+         p2-=1
+      elif string[p1].lower()!= string[p2].lower():
+         return False
       else:
-         continue
-   return sorted(divs)
+         p1+=1
+         p2-=1
+   return True
 
-def maths8(number): # Check for prime
-   if number == 0:
-      return 0
-   if number == 1:
-      return 1
-   else: 
-      divs = maths7(number)
-      return True if len(divs) == 2 else False
-
-def main():
-   inputs  = int(input("Enter any number: "))
-   print(maths7(inputs))
+def fibo(n):
+   if n <= 0:
+        return []
+   elif n == 1:
+      return [0]
+   elif n == 2:
+      return [0, 1]
+   else:
+      series = fibo(n-1)
+      series.append(series[-1] + series[-2])
+      return series
 
 if __name__ == "__main__":
-   main()
+   num = int(input("Enter any number: "))
+   print(fibo(num))
