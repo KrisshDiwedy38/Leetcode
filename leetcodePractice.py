@@ -1,149 +1,91 @@
-def pattern1(n): #5x5 * 
-   for i in range(n):
-      for j in range(n):
-         print("*",end="")
-      print()
+import math
 
-def pattern2(n): #right * triangle
-   for i in range(n+1):
-      for j in range(i):
-         print("*", end="")
-      print()
+def floatToInt(float_num):
+   int_num = int(str(float_num).split('.')[0]+str(float_num).split('.')[1])
+   return int_num
 
-def pattern3(n): #right numbered triangle ( 1 12 123)
-   for i in range(1,n+1):
-      for j in range(1,i+1):
-         print(j, end="")
-      print()
+def maths1(float_num): # Count the number of digits
+   int_num = int(str(float_num).split('.')[0]+str(float_num).split('.')[1])
+   digits = round(math.log10(int_num) + 1)
+   return(f"Digits in {float_num} : {digits}")
 
-def pattern4(n): #right numbered triangle ( 1 22 333)
-   for i in range(1,n+1):
-      for j in range(1,i+1):
-         print(i, end="")
-      print()
+def maths2(float_num): # Reverse the number
+   float_numbers = str(float_num).split('.')
+   if float_numbers[1] == '0':
+      decimal = 0
+      int_num = int(float_numbers[0])      
+   else:
+      decimal = len(float_numbers[0])
+      int_num = int(float_numbers[0] + float_numbers[1])
+   revNum = 0
+   while int_num > 0:
+      last_digit = int_num % 10
+      revNum = (revNum * 10) + last_digit 
+      int_num = int_num // 10
+   return(revNum/10**decimal)
 
-def pattern5(n): #inverted right * triangle
-   for i in range(n,0,-1):
-      for j in range(i):
-         print("*", end="")
-      print()
+def maths3(float_num): # Checking for palindrome
+   revNum = maths2(float_num)
+   if revNum == float_num:
+      return("Palindrome")
+   else:
+      return("Not Palindrome")
 
-def pattern6(n): #inverted right numbered triangle
-   for i in range(n,0,-1):
-      for j in range(1,i+1):
-         print(j, end="")
-      print()
+def maths4(a, b):  # GCD
+    if a == 0 or b == 0:
+        return max(a, b)
 
-def pattern7(n): # Pyramid
-   for i in range(1,n+1):
-      spaces = ' ' * (n - i)
-      stars = '*' * (2 * i - 1)
-      print(spaces + stars)
+    if a == b:
+        return a
 
-def pattern8(n): # Inverted Pyramid
-   for i in range(n, 0,-1):
-      spaces = ' ' * (n - i)
-      stars = '*' * (2 * i - 1)
-      print(spaces + stars)
+    if a > b:
+        return maths4(a - b, b)
+    else:
+        return maths4(a, b - a)
 
-def pattern9(n): # Joint Pyramid
-   pattern7(n)
-   pattern8(n)
+def maths5(a,b): # LCM = |a * b| // GCD (a,b)
+   if a == 0 or b == 0:
+      return 0
+   else:
+      return f" LCM = { abs(a*b) // maths4(a,b)}"
 
-def pattern10(n): # Joint right triangles
-   for i in range(1,n*2):
-      if i < n:
-         print("*" * i)
+def maths6(number): # Armstrong abc = a^3 + b^3 + c^3 ( 3 = len(abc)) 
+   length = len(str(number))
+   sum = 0
+   while number > 0:
+      last_digit = number % 10
+      sum == last_digit ** length
+      number = number // 10
+
+   if sum == number:
+      return("Yes")
+   else:
+      return('No')
+
+def maths7(number): # All Divisors
+   root = int(math.sqrt(number))
+   divs = []
+   for i in range(1,root+1):
+      if number % i == 0:
+         divs.append(i)
+         if i != number // i:
+            divs.append(number // i) 
       else:
-         print("*"*(n*2 - i))
+         continue
+   return sorted(divs)
 
-def pattern11(n): # Right triangle (1 01 101)
-   for i in range(1,n+1):
-      if i % 2 == 0:
-         start = "even"
-      else:
-         start = "odd"
-      for j in range(1,i+1):
-         if start == "odd":
-            if j %2 == 0:
-               print(0,end="")
-            else:
-               print(1,end="")
-         else:
-            if j %2 == 0:
-               print(1,end="")
-            else:
-               print(0,end="")
-      print()
+def maths8(number): # Check for prime
+   if number == 0:
+      return 0
+   if number == 1:
+      return 1
+   else: 
+      divs = maths7(number)
+      return True if len(divs) == 2 else False
 
-def pattern12(n): # Right triangle + mirrored
-   for i in range(1,n+1):
-      for j in range(1,i+1):
-         print(j,end="")
-      print(" " * (n-i)*2,end="")
-      for j in range(i,0,-1):
-         print(j,end="")
-      print()
-
-def pattern13(n): # Alphabet right triangle
-   for i in range(1,n+1):
-      for j in range(i):
-         asc = 65 + j
-         print(chr(asc), end="")
-      print()
-      
-def pattern14(n): # Alphabet right inverter triangle
-   for i in range(n,0,-1):
-      for j in range(i):
-         asc = 65 + j
-         print(chr(asc), end="")
-      print()
-
-def pattern15(n): # Alphabet right triangle (A BB CCC)
-   for i in range(0,n):
-      for j in range(i+1):
-         asc = 65 + i
-         print(chr(asc),end="")
-      print()
-
-def pattern16(n): # Alphabet mirror pyramid (A ABA ABCBA)
-   for i in range(n):
-      print(" "* (n-i), end="")
-      asc = 65
-      for j in range(i*2+1):
-         mid = (i*2 + 1) // 2
-         print(chr(asc),end="")
-         if j+1 <= mid:
-            asc += 1
-         else:
-            asc-= 1
-      print()
-         
-def pattern17(n): # Alphabet right triangle (E DE CDE)
-   for i in range(n-1,-1,-1):
-      asc = 65
-      for j in range(i,n):
-         print(chr(asc+j),end="")
-      print()
-         
-def pattern18(n): # Diamond in middle
-   pass
-
-def pattern19(n): # Joint right triangle mirrored
-   pass
-
-def pattern20(n): # Right triangle 1 - n numbers
-   pass
-
-def pattern21(n): # Empty box
-   pass
-
-def pattern22(n): #Concentric Squares
-   pass
-
-
-def main(n):
-   pattern17(n)
+def main():
+   inputs  = int(input("Enter any number: "))
+   print(maths7(inputs))
 
 if __name__ == "__main__":
-   main(n = 5) 
+   main()
