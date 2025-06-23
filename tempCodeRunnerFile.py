@@ -1,3 +1,8 @@
+store = {}
 
+store['even'] = []
+store['odd'] = []
 
-print(sum([3,2,3,2,2,2]))
+store['odd'].append(7)
+
+print(store)
