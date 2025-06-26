@@ -22,12 +22,22 @@ def bubbleSort(nums): # Bubble Sorting TC- O(n2) SC - O(1)
          break
    return nums
 
-def insertSort(nums): # Insertion Sorting  TC - O(n2) SC - O(1) 
+def insertSort(nums): # Insertion Sorting : Swapping  TC - O(n2) SC - O(1) 
    for i in range(1, len(nums)): # O(n)
-      for j in range(i,0,-1): #O(i * n)
+      for j in range(i,0,-1): #O(n)
          if nums[j] < nums[j-1]:
             swap(nums,j,j-1)
    return nums
+
+def insertion_sort(nums): # Insertion Sorting : Shifting TC - O(n2) SC - O(1)
+    for i in range(1, len(nums)):
+        key = nums[i]
+        j = i - 1
+        while j >= 0 and nums[j] > key:
+            nums[j + 1] = nums[j]
+            j -= 1
+        nums[j + 1] = key
+    return nums
 
 if __name__ == "__main__":
    # user_input = input("Enter a list of numbers seperated by space: ")
