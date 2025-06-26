@@ -22,10 +22,9 @@ def bubbleSort(nums): # Bubble Sorting TC- O(n2) SC - O(1)
          break
    return nums
 
-def insertSort(nums): # Insertion Sorting 
-   for i in range(1, len(nums)):
-      print(nums[:i])
-      for j in range(i,0,-1):
+def insertSort(nums): # Insertion Sorting  TC - O(n2) SC - O(1) 
+   for i in range(1, len(nums)): # O(n)
+      for j in range(i,0,-1): #O(i * n)
          if nums[j] < nums[j-1]:
             swap(nums,j,j-1)
    return nums
