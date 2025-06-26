@@ -29,9 +29,6 @@ def insertSort(nums): # Insertion Sorting
          if nums[j] < nums[j-1]:
             swap(nums,j,j-1)
    return nums
-  
-
-
 
 if __name__ == "__main__":
    # user_input = input("Enter a list of numbers seperated by space: ")
