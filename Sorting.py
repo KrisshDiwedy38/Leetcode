@@ -71,11 +71,17 @@ def merge(arr, low, mid, high):
 
    arr[low:high+1] = temp
 
-def quickSort(arr,low,high): # TC - O(n log n) SC - O(n)
+def quickSort(nums: list[int]) -> list[int]:
+   high = len(nums)-1
+   low = 0
+   quickSorting(nums,low,high)
+   return nums
+
+def quickSorting(arr,low,high): # TC - O(n log n) SC - O(n)
    if low < high:
       pivot_index = partition(arr,low,high) # TC - O(n) SC - O(n)
-      quickSort(arr, low, pivot_index-1)  # O(log n)
-      quickSort(arr, pivot_index+1, high) # O(log n)
+      quickSorting(arr, low, pivot_index-1)  # O(log n)
+      quickSorting(arr, pivot_index+1, high) # O(log n)
    
 def partition(arr,low,high): 
    pivot = arr[high] # SC - O(n)
@@ -95,5 +101,4 @@ if __name__ == "__main__":
    # nums = list(map(int, user_input.split()))
 
    nums = [34,32,27,24,19,21,15,10,8,5,2,1]
-   quickSort(nums, 0, len(nums)-1)
-   print(nums)
+   print(quickSort(nums))
