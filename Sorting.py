@@ -39,9 +39,41 @@ def insertion_sort(nums): # Insertion Sorting : Shifting TC - O(n2) SC - O(1)
         nums[j + 1] = key
     return nums
 
+def mergeSort(nums): # TC - O(n log n) SC - O(n)
+   high = len(nums) - 1
+   low = 0
+   mergeSortDivide(nums,low,high)
+   return nums
+
+def mergeSortDivide(arr, low, high): 
+	if low >= high:
+		return
+	mid = (low + high) // 2
+	mergeSortDivide(arr, low, mid) # TC - O(log n)
+	mergeSortDivide(arr,mid+1,high) # TC - O(log n)
+	merge(arr, low, mid, high) # TC - O(n) 
+
+def merge(arr, low, mid, high):
+   temp = [] # SC - O(n) - New Array
+   left = low
+   right = mid + 1
+   
+   while left <= mid and right <= high: # TC - O(n)
+      if arr[left] <= arr[right]:
+         temp.append(arr[left])
+         left += 1 
+      else:
+         temp.append(arr[right])
+         right += 1
+
+   temp.extend(arr[left:mid+1])
+   temp.extend(arr[right:high+1])
+
+   arr[low:high+1] = temp
+
 if __name__ == "__main__":
    # user_input = input("Enter a list of numbers seperated by space: ")
    # nums = list(map(int, user_input.split()))
 
    nums = [34,32,27,24,19,21,15,10,8,5,2,1]
-   print(insertSort(nums))
+   print(mergeSort(nums))

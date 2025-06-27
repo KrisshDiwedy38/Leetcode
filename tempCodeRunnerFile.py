@@ -1,8 +1,11 @@
-store = {}
+arr = [34,6,235,65,5,637,573,2]
 
-store['even'] = []
-store['odd'] = []
+mid = 5
 
-store['odd'].append(7)
+left = 4
 
-print(store)
+temp = []
+if left <= mid:
+   temp.append(arr[left:mid+1])
+
+print(temp)
