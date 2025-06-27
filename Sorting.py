@@ -71,9 +71,29 @@ def merge(arr, low, mid, high):
 
    arr[low:high+1] = temp
 
+def quickSort(arr,low,high): # TC - O(n log n) SC - O(n)
+   if low < high:
+      pivot_index = partition(arr,low,high) # TC - O(n) SC - O(n)
+      quickSort(arr, low, pivot_index-1)  # O(log n)
+      quickSort(arr, pivot_index+1, high) # O(log n)
+   
+def partition(arr,low,high): 
+   pivot = arr[high] # SC - O(n)
+   i = low - 1
+
+   for j in range(low,high): # TC - O(n)
+      if arr[j] <= pivot:
+         i += 1
+         arr[i] , arr[j] = arr[j], arr[i]
+
+   arr[i+1], arr[high] = arr[high], arr[i+1]
+   return i + 1
+
+
 if __name__ == "__main__":
    # user_input = input("Enter a list of numbers seperated by space: ")
    # nums = list(map(int, user_input.split()))
 
    nums = [34,32,27,24,19,21,15,10,8,5,2,1]
-   print(mergeSort(nums))
+   quickSort(nums, 0, len(nums)-1)
+   print(nums)
