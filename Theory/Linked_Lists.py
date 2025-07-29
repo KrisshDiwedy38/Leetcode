@@ -85,6 +85,7 @@ class SinglyLinkedList:
 
       del curr.next
       curr.next = None
+      self.size -= 1
       return
       
       
@@ -101,6 +102,7 @@ class SinglyLinkedList:
       temp = curr.next.next
       del curr.next
       curr.next = temp
+      self.size -= 1
       return
 
    def search_n_empty(self,val):
@@ -128,9 +130,33 @@ class SinglyLinkedList:
       print(result)
       return
    
-   def display_rev_list(self):
-      pass
+   def rev_list(self): # Two pointer approach
+      prev , curr = None, self.head
+
+      while curr:
+         temp = curr.next
+         curr.next = prev
+         prev = curr
+         curr = temp
       
+      self.head = prev
+      return 
+
+   def sort_list(self):
+      for i in range(self.size):
+         curr = self.head     # Resetting curr to the new head of the list
+         swapped = False
+         while curr.next:
+            if curr.val > curr.next.val:
+               temp = curr.val
+               curr.val = curr.next.val
+               curr.next.val = temp
+               swapped = True
+            curr = curr.next
+         if not swapped:
+            break
+      return self.head
+
 
 """
 Doubly Linked List Operations
@@ -181,6 +207,7 @@ class D_Node:
       return str(self.val)
    
 
+
 if __name__ == "__main__":
    listt = SinglyLinkedList()
    listt.insert_at_start(10)
@@ -191,6 +218,9 @@ if __name__ == "__main__":
    listt.insert_at_any(5,2)
    listt.display_list()
    listt.search_n_empty(5)
-   listt.delete_at_any(10)
+   listt.rev_list()
    listt.display_list()
-   
+   listt.rev_list()
+   listt.display_list()
+   listt.sort_list()
+   listt.display_list()
