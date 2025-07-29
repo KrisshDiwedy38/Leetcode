@@ -1,3 +1,26 @@
+"""
+Basic Recursion Use-Cases:
+- Factorial
+- Fibonacci
+- Power(x, n)
+- Print numbers forward/backward
+- Reverse string
+- Palindrome check
+- Binary search (recursive)
+
+Advanced Recursive Patterns:
+- Generate permutations
+- Generate subsets (power set)
+- Combination sum
+- Palindromic partitions
+- N-Queens
+- Sudoku solver
+- Gray code generation
+- Maze/DFS problems
+- Flatten nested lists
+- Tower of Hanoi
+"""
+
 def rec1(N): # Print something N times
    if N != 0:
       print(f" Hi! no. {N}")
