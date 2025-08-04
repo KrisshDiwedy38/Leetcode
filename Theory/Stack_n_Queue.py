@@ -21,6 +21,52 @@ Advanced Stack Operations:
 - Largest rectangle in histogram
 - Monotonic stack problems
 """
+class Stack:
+   def __init__(self):
+      self.items = []
+
+   def push(self,val):
+      self.items.append(val)
+   
+   def pop(self):
+      popped = self.items[-1]
+      self.items.remove(popped)
+      return popped
+   
+   def peek(self):
+      top = self.items[-1]
+      return top
+   
+   def display_stack(self):
+      if self.items:
+         result = ' __ '.join(str(i) for i in self.items )
+         print(result)
+      else:
+         print("Empty Stack")
+
+      
+   def clear_stack(self):
+      while self.items:
+         self.items.pop()
+      
+
+
+def stack_main():
+   stk = Stack()
+   stk.push(10)
+   stk.push(13)
+   stk.push(12)
+   stk.push(11)
+   stk.display_stack()
+   stk.pop()
+   stk.display_stack()
+   stk.clear_stack()
+   stk.display_stack()
+   stk.push(10)
+   stk.push(13)
+   stk.push(12)
+   stk.push(11)
+   stk.display_stack()
 
 """
 Basic Queue Operations:
@@ -43,3 +89,39 @@ Advanced Queue Operations:
 - Generate binary numbers using queue
 - Interleave first and second halves
 """
+
+class Queue():
+   def __init__(self):
+      self.items = []
+      self.size = 0
+
+   def enque(self,val):
+      self.items.append(val)
+      self.size += 1
+
+   def deque(self):
+      self.items.pop(0)
+      self.size -= 1
+   
+   def peek_f(self):
+      print(self.items[0])
+   
+   def peek_r(self):
+      print(self.items[-1])
+
+   def size(self):
+      print(self.size)
+   
+   def display_queue(self):
+      if self.items:
+         result = " __ ".join(str(i) for i in self.items)
+         print(result)
+      else:
+         print("Empty Queue")
+
+def queue_main():
+   pass
+
+if __name__ == "__main__":
+   stack_main()
+   queue_main()

@@ -21,3 +21,14 @@ Advanced Binary Search Applications:
     - Aggressive cows
     - Shipping packages within D days
 """
+
+
+class Binary_Search():
+    def __init__(self, arr):
+        self.arr = arr
+    
+    def standardBS(self,val):
+        pass
+
+        
+    

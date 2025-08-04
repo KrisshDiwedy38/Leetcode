@@ -189,7 +189,7 @@ def pattern22(n): #Concentric Squares
       print()
 
 def main(n):
-   pattern18(n)
+   pattern5(n)
 
 if __name__ == "__main__":
    main(n = 5) 
