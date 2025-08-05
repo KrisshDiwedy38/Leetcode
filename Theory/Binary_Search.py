@@ -98,39 +98,45 @@ class Binary_Search():
         
         left, right = 0, len(self.arr) -1 
 
-        while left <= right:
-            mid = left + (right - left) // 2
-
-            if self.arr[mid] == target:
-                print(f"Element first found at {mid}")
-                return 0
-            elif self.arr[mid] < target:
-                left = mid + 1
-            else:
-                right = mid - 1
-        
-        print(f"{target} not found")
-        return -1
-    
-    def last_occur(self):
-        target = int(input("Enter element to be searched: "))
-
-        left, right = 0, len(self.arr) - 1
-
-        store = 0
+        store = -1
 
         while left <= right:
             mid = left + (right - left) // 2
 
             if self.arr[mid] == target:
                 store = mid
-                left += 1
+                right = mid - 1
+            elif self.arr[mid] < target:
+                left = mid + 1
+            else:
+                right = mid - 1
+        
+        if store != -1:
+            print(f"{target} first occurs at index: {store}")
+            return 0
+        else:
+            print(f"{target} not found")
+            return -1
+    
+    def last_occur(self):
+        target = int(input("Enter element to be searched: "))
+
+        left, right = 0, len(self.arr) - 1
+
+        store = -1
+
+        while left <= right:
+            mid = left + (right - left) // 2
+
+            if self.arr[mid] == target:
+                store = mid
+                left = mid + 1
             elif self.arr[mid] < target:
                 left = mid + 1
             else:
                 right = mid-1
         
-        if store:
+        if store != -1:
             print(f"{target} last occurs at index: {store}")
             return 0
         else:
