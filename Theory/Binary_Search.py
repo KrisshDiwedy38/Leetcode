@@ -117,13 +117,13 @@ class Binary_Search():
 
         left, right = 0, len(self.arr) - 1
 
-        store = []
+        store = 0
 
         while left <= right:
             mid = left + (right - left) // 2
 
             if self.arr[mid] == target:
-                store.append(mid)
+                store = mid
                 left += 1
             elif self.arr[mid] < target:
                 left = mid + 1
@@ -131,7 +131,7 @@ class Binary_Search():
                 right = mid-1
         
         if store:
-            print(f"{target} last occurs at index: {store[-1]}")
+            print(f"{target} last occurs at index: {store}")
             return 0
         else:
             print(f"{target} not found")
